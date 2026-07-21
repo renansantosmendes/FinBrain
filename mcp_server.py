@@ -32,7 +32,11 @@ from skills.macro_brasil.tools import get_bcb_series, get_ptax_dolar_periodo, ge
 from skills.macro_global.tools import get_world_bank_indicator, search_world_bank_indicator, compare_countries_latest
 from skills.cripto.tools import get_crypto_price, get_crypto_ohlcv, get_crypto_order_book, list_available_exchanges
 
-mcp = FastMCP("finbrain", stateless_http=True)
+# host="0.0.0.0" (instead of the default "127.0.0.1") stops FastMCP from
+# auto-enabling its localhost-only DNS-rebinding allowlist, which otherwise
+# rejects every request whose Host header isn't 127.0.0.1/localhost — a
+# problem once this runs behind a real domain (Vercel, etc).
+mcp = FastMCP("finbrain", host="0.0.0.0", stateless_http=True)
 
 LANGCHAIN_TOOLS = [
     collect_yfinance_data,
