@@ -1,7 +1,12 @@
 """MCP server exposing FinBrain's skills as tools for any MCP-compatible client."""
 
+import os
 import sys
 sys.stdout.reconfigure(encoding="utf-8")
+
+# wbdata builds its default client (and cache directory) at import time, and
+# serverless runtimes like Vercel only allow writes under /tmp.
+os.environ.setdefault("WBDATA_CACHE_PATH", "/tmp/wbdata_cache/cache")
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -9,9 +14,14 @@ load_dotenv()
 import functools
 from contextlib import asynccontextmanager
 
+import yfinance as yf
 from fastapi import FastAPI
 from langfuse import get_client, observe
 from mcp.server.fastmcp import FastMCP
+
+# yfinance's default timezone cache also lives under the user cache dir,
+# which is read-only on serverless runtimes like Vercel.
+yf.set_tz_cache_location("/tmp/yfinance_cache")
 
 from skills.stock_analysis.tools import collect_yfinance_data
 from skills.sentiment_analysis.tools import fetch_discount_coupon
