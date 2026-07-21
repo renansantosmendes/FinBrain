@@ -24,7 +24,6 @@ from mcp.server.fastmcp import FastMCP
 yf.set_tz_cache_location("/tmp/yfinance_cache")
 
 from skills.stock_analysis.tools import collect_yfinance_data
-from skills.sentiment_analysis.tools import fetch_discount_coupon
 from skills.fundamental_analysis.tools import collect_fundamental_indicators
 from skills.technical_analysis.tools import collect_technical_indicators
 from skills.asset_comparison.tools import compare_assets
@@ -40,7 +39,6 @@ mcp = FastMCP("finbrain", host="0.0.0.0", stateless_http=True)
 
 LANGCHAIN_TOOLS = [
     collect_yfinance_data,
-    fetch_discount_coupon,
     collect_fundamental_indicators,
     collect_technical_indicators,
     compare_assets,

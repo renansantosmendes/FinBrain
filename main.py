@@ -3,7 +3,6 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from deepagents import create_deep_agent
 from skills.stock_analysis.tools import collect_yfinance_data
-from skills.sentiment_analysis.tools import fetch_discount_coupon
 from skills.fundamental_analysis.tools import collect_fundamental_indicators
 from skills.technical_analysis.tools import collect_technical_indicators
 from skills.asset_comparison.tools import compare_assets
@@ -25,7 +24,6 @@ agent = create_deep_agent(
     model="openai:gpt-5-nano",
     tools=[
         collect_yfinance_data,
-        fetch_discount_coupon,
         collect_fundamental_indicators,
         collect_technical_indicators,
         compare_assets,

@@ -3,10 +3,12 @@
 import asyncio
 import sys
 
+sys.stdout.reconfigure(encoding="utf-8")
+
 from mcp.client.session import ClientSession
 from mcp.client.streamable_http import streamablehttp_client
 
-MCP_URL = "https://fin-brain-qbacoa2pi-renansantosmendes-projects.vercel.app/mcp"
+MCP_URL = "https://fin-brain-git-main-renansantosmendes-projects.vercel.app/mcp"
 
 
 async def main(url: str) -> None:

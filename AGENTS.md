@@ -26,7 +26,7 @@ código e segue convenção de engenharia (inglês).
 - **Skills (pastas):** `snake_case` em inglês, nome do domínio.
   Ex.: `stock_analysis`, `technical_analysis`, `asset_comparison`.
 - **Tools (funções `@tool`):** verbo + objeto, em inglês, `snake_case`.
-  Ex.: `collect_technical_indicators`, `compare_assets`, `fetch_discount_coupon`.
+  Ex.: `collect_technical_indicators`, `compare_assets`, `collect_yfinance_data`.
 - **Variáveis:** inglês, `snake_case`, descritivas.
   Ex.: `filtered_data`, `closing_prices`, `current_price` (nunca `dados_filtrados`, `preco_atual`).
 - **Funções privadas/auxiliares:** prefixo `_`, mesma convenção de nome.
